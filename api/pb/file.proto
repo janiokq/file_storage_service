@@ -1,0 +1,88 @@
+syntax = "proto3";
+package storage;
+
+message InApplyFid {
+  string Name = 1; //文件名
+  int64  Size = 2; //文件总大小 字节
+  string ExName = 3;
+  string Md5 = 4; //文件MD5
+  int32  SliceTotal = 5; // 1 为不分片文件  (1~3000)
+  int64  ExpiredTime = 6; //过期时间 设置为0 文件永久不过期 单位秒
+  int32  Width = 7; //宽 图片文件需要
+  int32  Height = 8; //高 图片文件需要
+}
+
+message InFid{
+  int64  Fid = 1;
+}
+
+message InMd5{
+  string Md5 = 1;
+}
+
+message OutApplyFid {
+  int64  Fid = 1;
+  int32 Status = 2; //1 不存在   2 等待上传  3 正在上传  4 存在  5 过期
+}
+
+message InUpSliceFileItem {
+  int64  Fid = 1; //文件ID
+  int32 Part = 2; //分片ID
+  bytes Data = 3; //文件内容
+  string Md5 = 4; //分片MD5
+}
+
+message InDownSliceFileItem {
+  int64  Fid = 1; //文件ID
+  int64  Limit = 2; //要读多长的数据
+  int64  Offset = 3; //从哪里开始读
+}
+
+message OutDownSliceFileItem {
+  int64  Fid = 1; //文件ID
+  bytes  Data = 2; //读取到的数据
+  string Md5 = 3; //下载块的MD5
+}
+
+message OutDownFile{
+  int64  Fid = 1; //文件ID
+  bytes  Data = 2; //读取到的数据
+  string Md5 = 3;
+}
+
+message InUpFile{
+  int64  Fid = 1; //文件ID
+  bytes Data = 3; //文件内容
+  string Md5 = 4; //MD5
+}
+
+
+message FileInfo  {
+  int64       Fid = 1;       //文件ID
+  string      Name = 2;  //文件名
+  string      BucketName = 3;  //桶名
+  int64       Size = 4;  //文件总大小
+  string      ContentType = 5;  //文件信息
+  string      Md5 = 6;  //文件MD5
+  string      ExName = 7;  //文件扩展名
+  bool        IsImage = 8;  //是否是图片资源
+  ImageEx     ExImage = 9;  //图片文件扩展信息
+  int32       SliceTotal = 10;  // 1 为不分片文件  (1~3000)
+  int64       ExpiredTime = 11;  //过期时间 设置为0 文件永久不过期
+  int32       Status = 12;  //conf 文件状态 查看解析
+  int64       CreateTime = 13;
+  int64       UpdateTime = 14; //如果最后一次操作时间+FileMaxWaitTime大于当前时间,并且文件状态不是已经完成,自动删除
+}
+
+message ImageEx  {
+  int32     Height = 1;
+  int32     Width = 2;
+  int64     ThumbnailFid = 3;
+  int32     ThumbnailHeight = 4;
+  int32     ThumbnailWidth = 5;
+}
+
+message InCancelUpload {
+  int64  Fid = 1; //文件ID
+}
+

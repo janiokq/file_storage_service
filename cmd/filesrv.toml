@@ -1,0 +1,24 @@
+development = false
+snowFlakeId = 1
+appName= "filesrv"
+[minio]
+    endpoint= "192.168.1.86:9000"
+    accessKeyID = "minioadmin"
+    secretAccessKey ="minioadmin"
+    useSSL=false
+    maxBucket =200
+    location="ap-east-1"     # https://docs.aws.amazon.com/general/latest/gr/rande.html
+[mongo]
+    url = "mongodb://192.168.1.86:27017/"
+    dataBase = "file_storage"
+[log]
+    logFileDir = "logs"
+    appName = "filesrv"
+    maxSize = 100
+    maxBackups = 60
+    maxAge = 30
+    level  = "debug"
+[http]
+    port = 8080
+[grpc]
+    port = 8081
