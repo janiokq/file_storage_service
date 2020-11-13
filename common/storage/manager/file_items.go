@@ -55,6 +55,7 @@ func (s *FileItem) AutoClear() {
 }
 
 func (f *FileItem) AddItem(upItem *FileUploadItem) error {
+
 	f.mu.Lock()
 	defer f.mu.Unlock()
 	if f.IsSuccess {
