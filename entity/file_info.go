@@ -27,4 +27,5 @@ type ImageEx struct {
 	ThumbnailFid    int64 `bson:"thumbnail_fid"`
 	ThumbnailHeight int32 `bson:"thumbnail_height"`
 	ThumbnailWidth  int32 `bson:"thumbnail_width"`
+	Size            int32 `bson:"size"`
 }
