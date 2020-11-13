@@ -13,6 +13,7 @@ func (s *service) DelFileByFidAndBucketName(fileInfo *entity.FileInfo) (err erro
 			return err
 		}
 	}
+
 	if err = s.r.StorageServer.DelFile(fileInfo.Fid, fileInfo.BucketName); err != nil {
 		return err
 	}

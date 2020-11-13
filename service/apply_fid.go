@@ -14,6 +14,7 @@ import (
 
 func (s *service) ApplyFid(info *storage.InApplyFid) (out *storage.OutApplyFid, err error) {
 	var needNew bool
+
 	out, needNew, err = s.applyFidCheckExistByMd5(info)
 	if err != nil {
 		return
