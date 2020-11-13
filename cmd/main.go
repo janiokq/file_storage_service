@@ -9,6 +9,7 @@ import (
 )
 
 func main() {
+
 	flag.Parse()
 	if err := conf.Init(); err != nil {
 		panic(err)

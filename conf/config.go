@@ -32,6 +32,7 @@ type grpcConf struct {
 }
 
 func init() {
+
 	flag.StringVar(&confPath, "conf", "", "default config path")
 }
 

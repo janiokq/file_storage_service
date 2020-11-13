@@ -21,6 +21,7 @@ type Repository struct {
 }
 
 func NewRepository(c *conf.Config) (r *Repository) {
+
 	r = &Repository{
 		c:       c,
 		mClient: m.NewMinio(c.Minio),

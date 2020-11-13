@@ -1,6 +1,7 @@
 syntax = "proto3";
 package storage;
 
+
 message InApplyFid {
   string Name = 1; //文件名
   int64  Size = 2; //文件总大小 字节
